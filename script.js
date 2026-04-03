@@ -30,6 +30,8 @@ function setCat(btn) {
     badge.innerText = "Eixo: " + btn.innerText;
     badge.style.color = "var(--mint)";
     badge.style.borderColor = "var(--mint)";
+
+    document.getElementById('formulario-denuncia').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // Consulta de Status
