@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Cidadania Segura | Canal de Denúncias</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="safety-header">
+        <div class="container flex-between">
+            <span><i class="fas fa-user-shield"></i> Navegação Criptografada e Segura</span>
+            <span class="session-info">Sessão: <b id="session-id">---</b></span>
+        </div>
+    </div>
+
+    <header class="hero-brand">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo">🛡️ CIDADANIA<b>SEGURA</b></div>
+                <div class="tagline">Canal Oficial de Proteção ao Cidadão</div>
+            </div>
+            <div class="hero-text">
+                <h1 id="support-msg">Sua segurança é nossa prioridade absoluta.</h1>
+                <p>Relate irregularidades de forma 100% anônima. Não rastreamos seu IP ou localização.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="tracker">
+            <div class="tracker-box">
+                <div class="tracker-input-area">
+                    <label><i class="fas fa-search"></i> Acompanhar minha denúncia:</label>
+                    <div class="input-group">
+                        <input type="text" id="proto-search" placeholder="Digite seu protocolo (Ex: SNPC-2026...)">
+                        <button onclick="buscarStatus()">Consultar</button>
+                    </div>
+                </div>
+                <div id="status-result" class="status-panel hidden">
+                    <div class="timeline-simple">
+                        <div class="t-step done"><span>✔</span> Recebida</div>
+                        <div class="t-step process"><span>●</span> Em Análise</div>
+                        <div class="t-step"><span>○</span> Encaminhada</div>
+                        <div class="t-step"><span>○</span> Finalizada</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="main-title">Eixos de Ocorrência</h2>
+        <div class="eixos-container">
+            
+            <div class="eixo-card">
+                <div class="eixo-head"><i class="fas fa-heartbeat"></i> Integridade e Vida</div>
+                <div class="eixo-list">
+                    <button class="opt" onclick="setCat(this)">Violência Doméstica / Contra Mulher</button>
+                    <button class="opt" onclick="setCat(this)">Abuso ou Exploração de Menores</button>
+                    <button class="opt" onclick="setCat(this)">Maus-tratos contra Idosos / PCD</button>
+                    <button class="opt" onclick="setCat(this)">Tráfico de Entorpecentes</button>
+                    <button class="opt" onclick="setCat(this)">Porte de Arma / Ameaça</button>
+                    <button class="opt" onclick="setCat(this)">Homicídio / Tentativa</button>
+                    <button class="opt" onclick="setCat(this)">Cárcere Privado</button>
+                </div>
+            </div>
+
+            <div class="eixo-card">
+                <div class="eixo-head"><i class="fas fa-balance-scale"></i> Direitos e Ética</div>
+                <div class="eixo-list">
+                    <button class="opt" onclick="setCat(this)">Assédio Sexual ou Moral</button>
+                    <button class="opt" onclick="setCat(this)">Racismo / Homofobia / Intolerância</button>
+                    <button class="opt" onclick="setCat(this)">Bullying / Cyberbullying</button>
+                    <button class="opt" onclick="setCat(this)">Corrupção / Desvio de Verba</button>
+                    <button class="opt" onclick="setCat(this)">Trabalho Escravo / Infantil</button>
+                    <button class="opt" onclick="setCat(this)">Estelionato / Golpes Financeiros</button>
+                    <button class="opt" onclick="setCat(this)">Falsidade Ideológica</button>
+                </div>
+            </div>
+
+            <div class="eixo-card">
+                <div class="eixo-head"><i class="fas fa-city"></i> Ordem e Ambiente</div>
+                <div class="eixo-list">
+                    <button class="opt" onclick="setCat(this)">Maus-tratos a Animais</button>
+                    <button class="opt" onclick="setCat(this)">Descarte Irregular de Lixo / Esgoto</button>
+                    <button class="opt" onclick="setCat(this)">Queimadas / Desmatamento</button>
+                    <button class="opt" onclick="setCat(this)">Perturbação do Sossego (Som Alto)</button>
+                    <button class="opt" onclick="setCat(this)">Vandalismo / Pichação</button>
+                    <button class="opt" onclick="setCat(this)">Ocupação Irregular de Área</button>
+                    <button class="opt" onclick="setCat(this)">Dano ao Patrimônio Público</button>
+                </div>
+            </div>
+
+            <div class="eixo-card">
+                <div class="eixo-head"><i class="fas fa-tools"></i> Serviços e Cidade</div>
+                <div class="eixo-list">
+                    <button class="opt" onclick="setCat(this)">Iluminação Pública Defeituosa</button>
+                    <button class="opt" onclick="setCat(this)">Buracos ou Vias Danificadas</button>
+                    <button class="opt" onclick="setCat(this)">Falta de Saneamento / Água</button>
+                    <button class="opt" onclick="setCat(this)">Irregularidade em Posto de Saúde</button>
+                    <button class="opt" onclick="setCat(this)">Irregularidade Escolar / Merenda</button>
+                    <button class="opt" onclick="setCat(this)">Foco de Dengue / Infestação</button>
+                    <button class="opt" onclick="setCat(this)">Trânsito / Veículos Abandonados</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="report-area">
+            <div class="report-form">
+                <div class="form-title">
+                    <h3>Registro de Ocorrência</h3>
+                    <div id="cat-badge" class="badge">Nenhum eixo selecionado</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label>Onde aconteceu?</label>
+                        <div class="multi-input">
+                            <input type="text" id="bairro" placeholder="Bairro">
+                            <input type="text" id="rua" placeholder="Rua / Número">
+                        </div>
+                        <input type="text" placeholder="Ponto de Referência">
+                        
+                        <label>Relato Detalhado</label>
+                        <textarea placeholder="O que aconteceu? Quem estava envolvido? Quando ocorreu? Seja o mais específico possível para ajudar na apuração."></textarea>
+                    </div>
+                    
+                    <div class="form-col">
+                        <label>Evidências (Fotos, Vídeos, Documentos)</label>
+                        <div class="drop-zone" onclick="document.getElementById('file-input').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Clique ou arraste arquivos para anexar</p>
+                            <span>Máximo: 50MB por arquivo</span>
+                            <input type="file" id="file-input" hidden multiple>
+                        </div>
+                        <div id="file-names" class="file-list"></div>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="enviarDenuncia()">ENVIAR DENÚNCIA ANÔNIMA</button>
+            </div>
+        </section>
+
+        <div class="support-links">
+            <div class="s-card">
+                <h5><i class="fas fa-phone"></i> Emergência Direta</h5>
+                <p>Polícia: <b>190</b> | SAMU: <b>192</b></p>
+            </div>
+            <div class="s-card">
+                <h5><i class="fas fa-heart"></i> Apoio Emocional</h5>
+                <p>CVV: <b>188</b> (Atendimento 24h)</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Portal Cidadania Segura | Proteção e Sigilo Garantidos por Lei.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
